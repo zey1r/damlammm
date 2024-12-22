@@ -8,9 +8,10 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #f8f9fa;
+            background: linear-gradient(to bottom, #ffffff, #ffcccc);
             margin: 0;
             padding: 0;
+            overflow: hidden; /* Taşmayı önleme */
         }
         .container {
             margin-top: 50px;
@@ -46,7 +47,6 @@
         #noButton {
             background-color: #6c757d;
         }
-
         /* Mobil cihazlar için medya sorgusu */
         @media (max-width: 600px) {
             .buttons {
@@ -55,6 +55,42 @@
             button {
                 width: 90%; /* Mobil cihazlar için genişliği artır */
             }
+        }
+        /* Kalplerin stili ve animasyonu */
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            transform: rotate(-45deg);
+            animation: fall 5s infinite;
+        }
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+        }
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+        .heart::after {
+            left: 10px;
+            top: 0;
         }
     </style>
 </head>
@@ -83,6 +119,20 @@
             noButton.style.left = `${randomX}px`;
             noButton.style.top = `${randomY}px`;
         }
+
+        // Kalpler oluşturma
+        function createHearts() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.animationDuration = `${Math.random() * 2 + 3}s`;
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHearts, 300);
     </script>
 </body>
 </html>
