@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Özür Dilerim</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            color: #ff6b6b;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative; /* Butonların konumunun kontrol edileceği konteyner */
+        }
+        button {
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px;
+            position: relative; /* Butonları birbirinden ayırmak için */
+        }
+        button:hover {
+            background-color: #ff4757;
+        }
+        #noButton {
+            background-color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Özür Dilerim Minik Bebeğim ❤️</h1>
+        <p>Sen benim bu hayatta en çok değer verdiğim şeysin Damlam. Beni affeder misin 🥺</p>
+        <div class="buttons">
+            <button onclick="affet()">Beni Affeder Misin Güzel Kızım</button>
+            <button id="noButton" onclick="kac()">Affetmeyeceğim</button>
+        </div>
+    </div>
+    <script>
+        // "Beni Affet" butonunun işlevi
+        function affet() {
+            alert("Teşekkür ederim prensesim! Seni çok seviyorum! 💖");
+        }
+
+        // "Affetmeyeceğim" butonunun kaçması
+        function kac() {
+            const noButton = document.getElementById('noButton');
+            const randomX = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            const randomY = Math.random() * (window.innerHeight - noButton.offsetHeight);
+
+            noButton.style.position = "absolute";
+            noButton.style.left = `${randomX}px`;
+            noButton.style.top = `${randomY}px`;
+        }
+    </script>
+</body>
+</html>
