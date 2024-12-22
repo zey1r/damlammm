@@ -24,7 +24,9 @@
         }
         .buttons {
             margin-top: 20px;
-            position: relative; /* Butonların konumunun kontrol edileceği konteyner */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         button {
             background-color: #ff6b6b;
@@ -35,13 +37,24 @@
             cursor: pointer;
             border-radius: 5px;
             margin: 10px;
-            position: relative; /* Butonları birbirinden ayırmak için */
+            width: 80%; /* Buton genişliğini ayarla */
+            max-width: 300px; /* Maksimum genişlik ayarla */
         }
         button:hover {
             background-color: #ff4757;
         }
         #noButton {
             background-color: #6c757d;
+        }
+
+        /* Mobil cihazlar için medya sorgusu */
+        @media (max-width: 600px) {
+            .buttons {
+                flex-direction: column;
+            }
+            button {
+                width: 90%; /* Mobil cihazlar için genişliği artır */
+            }
         }
     </style>
 </head>
