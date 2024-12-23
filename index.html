@@ -8,11 +8,10 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background: #ffffff; /* Başlangıçta normal renk */
+            background: #ffcccc; /* Tamamen kırmızı zemin */
             margin: 0;
             padding: 0;
             overflow: hidden; /* Taşmayı önleme */
-            transition: background-color 1s linear;
         }
         .container {
             margin-top: 50px;
@@ -109,6 +108,12 @@
         // "Beni Affet" butonunun işlevi
         function affet() {
             alert("Teşekkür ederim prensesim! Seni çok seviyorum! 💖");
+            // Kalplerin sayısını ve hızını artır
+            clearInterval(heartInterval);
+            heartInterval = setInterval(createHearts, 100); // Kalp sayısını artır
+            document.querySelectorAll('.heart').forEach(heart => {
+                heart.style.animationDuration = '2s'; // Kalp hızını artır
+            });
         }
 
         // "Affetmeyeceğim" butonunun kaçması
@@ -122,7 +127,7 @@
             noButton.style.top = `${randomY}px`;
         }
 
-        // Kalpler oluşturma ve arka plan rengini değiştirme
+        // Kalpler oluşturma
         function createHearts() {
             const heart = document.createElement('div');
             heart.classList.add('heart');
@@ -132,15 +137,10 @@
             setTimeout(() => {
                 heart.remove();
             }, 5000);
-            
-            // Arka plan rengini kademeli olarak kırmızıya dönüştür
-            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrolled = window.scrollY / scrollHeight;
-            const redValue = Math.min(255, Math.floor(scrolled * 255));
-            document.body.style.backgroundColor = `rgb(255, ${255 - redValue}, ${255 - redValue})`;
         }
 
-        setInterval(createHearts, 300);
+        let heartInterval = setInterval(createHearts, 300);
+
     </script>
 </body>
 </html>
